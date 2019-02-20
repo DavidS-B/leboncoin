@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactFileReader from "react-file-reader";
 import Home from "./containers/Home";
 import Header from "./components/Header";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
@@ -8,8 +9,6 @@ import Offer from "./containers/Offer";
 import SignUp from "./containers/SignUp";
 import LogIn from "./containers/LogIn";
 import Cookies from "js-cookie";
-// const uid2 = require("uid2");
-// const randomString = uid2(16);
 
 class App extends Component {
   state = {
