@@ -77,7 +77,7 @@ export class Offer extends Component {
 
   render() {
     return (
-      <div style={{ width: "985px", margin: "auto", marginTop: "30px" }}>
+      <div style={{ width: "82%", margin: "auto", marginTop: "30px" }}>
         {this.renderOffer()}
       </div>
     );

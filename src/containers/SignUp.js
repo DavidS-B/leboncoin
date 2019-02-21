@@ -12,14 +12,11 @@ export class SignUp extends Component {
   handleSubmit = async e => {
     e.preventDefault();
 
-    const response = await axios.post(
-      "http://localhost:3000/api/user/sign_up",
-      {
-        pseudo: this.state.pseudo,
-        email: this.state.email,
-        password: this.state.password
-      }
-    );
+    const response = await axios.post("http://localhost:3000/direct/sign_up", {
+      pseudo: this.state.pseudo,
+      email: this.state.email,
+      password: this.state.password
+    });
     if (response.data.token) {
       this.props.history.push("/");
       console.log(response.data);
@@ -40,15 +37,28 @@ export class SignUp extends Component {
     return (
       <div
         style={{
-          width: "985px",
+          width: "82%",
           margin: "auto",
           marginTop: "30px",
           display: "flex",
           backgroundColor: "white"
         }}
       >
-        <div style={{ width: "50%" }}>
-          <h1 style={{ fontWeight: "bold", marginBottom: "30px" }}>
+        <div
+          style={{
+            width: "50%",
+            padding: "2%",
+            paddingRight: "2%",
+            paddingLeft: "4%"
+          }}
+        >
+          <h1
+            style={{
+              fontWeight: "bold",
+              marginBottom: "45px",
+              fontSize: "20px"
+            }}
+          >
             Pourquoi créer un compte ?
           </h1>
           <h2 style={{ fontWeight: "bold", marginBottom: "10px" }}>
@@ -62,7 +72,7 @@ export class SignUp extends Component {
             style={{
               fontWeight: "bold",
               marginBottom: "10px",
-              marginTop: "15px"
+              marginTop: "30px"
             }}
           >
             Soyez les premiers informés
@@ -75,7 +85,7 @@ export class SignUp extends Component {
             style={{
               fontWeight: "bold",
               marginBottom: "10px",
-              marginTop: "15px"
+              marginTop: "30px"
             }}
           >
             Visibilité
@@ -85,13 +95,13 @@ export class SignUp extends Component {
             annonce a été vue, nombre de contacts reçus).
           </p>
         </div>
-        <div style={{ width: "50%" }}>
+        <div style={{ width: "50%", padding: "2%", paddingRight: "4%" }}>
           <h1
             style={{
               textAlign: "center",
-              fontSize: "18px",
+              fontSize: "20px",
               fontWeight: "bold",
-              marginBottom: "15px",
+              marginBottom: "30px",
               paddingBottom: "15px",
               borderBottom: "2px #F5692A solid"
             }}
@@ -101,53 +111,93 @@ export class SignUp extends Component {
           <form
             style={{
               display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center"
+              flexDirection: "column"
             }}
             onSubmit={this.handleSubmit}
           >
-            <label>
+            <label style={{ fontWeight: "bold" }}>
               Pseudo <br />
               <input
+                style={{
+                  width: "100%",
+                  height: "30px",
+                  border: "1px #989898 solid",
+                  borderRadius: "3px",
+                  marginTop: "5px",
+                  marginBottom: "10px"
+                }}
                 type="text"
                 name="pseudo"
                 value={this.state.pseudo}
                 onChange={this.handleChange}
               />
             </label>
-            <label>
+            <label style={{ fontWeight: "bold" }}>
               Adresse email <br />
               <input
+                style={{
+                  width: "100%",
+                  height: "30px",
+                  border: "1px #989898 solid",
+                  borderRadius: "3px",
+                  marginTop: "5px",
+                  marginBottom: "10px"
+                }}
                 type="email"
                 name="email"
                 value={this.state.email}
                 onChange={this.handleChange}
               />
             </label>
-            <div style={{ display: "flex" }}>
-              <label>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <label style={{ width: "100%", fontWeight: "bold" }}>
                 Mot de passe <br />
                 <input
-                  style={{ width: "90%" }}
                   type="password"
                   name="password"
+                  style={{
+                    width: "95%",
+                    height: "30px",
+                    border: "1px #989898 solid",
+                    borderRadius: "3px",
+                    marginTop: "5px",
+                    marginBottom: "10px"
+                  }}
                   value={this.state.pwd}
                   onChange={this.handleChange}
                 />
               </label>
-              <label>
+              <label style={{ width: "95%", fontWeight: "bold" }}>
                 Confirmer le mot de passe <br />
                 <input
                   type="password"
                   name="checkPwd"
-                  style={{ width: "90%" }}
+                  style={{
+                    width: "100%",
+                    height: "30px",
+                    border: "1px #989898 solid",
+                    borderRadius: "3px",
+                    marginTop: "5px",
+                    marginBottom: "20px"
+                  }}
                   value={this.state.checkPwd}
                   onChange={this.handleChange}
                 />
               </label>
             </div>
-            <input type="submit" value="Créer mon Compte Personnel" />
+            <input
+              style={{
+                width: "97.9%",
+                height: "30px",
+                boxSizing: "content-box",
+                backgroundColor: "#4083D7",
+                borderRadius: "3px",
+                color: "white",
+                fontSize: "14px"
+              }}
+              type="submit"
+              value=" Créer mon compte personnel"
+            />
           </form>
         </div>
       </div>

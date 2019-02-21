@@ -8,7 +8,7 @@ class Header extends React.Component {
         <div
           style={{
             display: "flex",
-            width: "985px",
+            width: "82%",
             margin: "auto"
           }}
         >
@@ -34,7 +34,7 @@ class Header extends React.Component {
             OFFRES
           </h2>
           <Link
-            to="/api/user/sign_up"
+            to="/direct/sign_up"
             style={{
               color: "white",
               fontSize: "13px",
@@ -45,7 +45,7 @@ class Header extends React.Component {
             Créer un compte
           </Link>
           <Link
-            to="/api/user/log_in"
+            to="/direct/log_in"
             style={{
               color: "white",
               fontSize: "13px",
