@@ -13,7 +13,7 @@ export class SignUp extends Component {
     e.preventDefault();
 
     const response = await axios.post(
-      "https://leboncoin-dsb.herokuapp.com/direct/sign_up" ||
+      "mongodb://heroku_pppqmgrd:tsevnakcu159ds2d6j9t1uoje5@ds149855.mlab.com:49855/heroku_pppqmgrd" ||
         "http://localhost:3000/direct/sign_up",
       {
         pseudo: this.state.pseudo,
