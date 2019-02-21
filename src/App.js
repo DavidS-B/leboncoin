@@ -13,26 +13,26 @@ import "./App.css";
 class App extends Component {
   state = {
     userId: Cookies.get("userId") || null,
-    userUsername: Cookies.get("userUsername") || null,
+    userPseudo: Cookies.get("userPseudo") || null,
     token: Cookies.get("token") || null
   };
 
   setUser = user => {
     this.setState({
       userId: user.id,
-      userUsername: user.Username,
+      userPseudo: user.pseudo,
       token: user.token
     });
 
     Cookies.set("userId", user.id);
-    Cookies.set("userUsername", user.username);
+    Cookies.set("userPseudo", user.pseudo);
     Cookies.set("token", user.token);
   };
 
   getUser = () => {
     return {
       token: this.state.token,
-      Username: this.state.userUsername,
+      pseudo: this.state.userPseudo,
       id: this.state.userId
     };
   };
@@ -97,7 +97,7 @@ class App extends Component {
                     borderRight: "1px white solid"
                   }}
                 >
-                  {this.state.userUsername}
+                  {this.state.userPseudo}
                 </span>
                 <span
                   style={{
@@ -107,12 +107,12 @@ class App extends Component {
                   }}
                   onClick={() => {
                     Cookies.remove("userId");
-                    Cookies.remove("userUsername");
+                    Cookies.remove("userPseudo");
                     Cookies.remove("token");
 
                     this.setState({
                       userId: null,
-                      userUsername: null,
+                      userPseudo: null,
                       token: null
                     });
                   }}

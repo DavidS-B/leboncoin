@@ -3,7 +3,7 @@ import axios from "axios";
 
 export class SignUp extends Component {
   state = {
-    username: "",
+    pseudo: "",
     email: "",
     password: "",
     checkPassword: ""
@@ -15,7 +15,7 @@ export class SignUp extends Component {
     const response = await axios.post(
       "http://localhost:49855/api/user/direct/sign_up",
       {
-        username: this.state.username,
+        pseudo: this.state.pseudo,
         email: this.state.email,
         password: this.state.password
       }
@@ -119,7 +119,7 @@ export class SignUp extends Component {
             onSubmit={this.handleSubmit}
           >
             <label style={{ fontWeight: "bold" }}>
-              username <br />
+              Pseudo <br />
               <input
                 style={{
                   width: "100%",
@@ -130,8 +130,8 @@ export class SignUp extends Component {
                   marginBottom: "10px"
                 }}
                 type="text"
-                name="username"
-                value={this.state.username}
+                name="pseudo"
+                value={this.state.pseudo}
                 onChange={this.handleChange}
               />
             </label>
