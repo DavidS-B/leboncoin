@@ -3,7 +3,7 @@ import axios from "axios";
 
 export class LogIn extends Component {
   state = {
-    pseudo: "",
+    email: "",
     password: ""
   };
 
@@ -13,7 +13,7 @@ export class LogIn extends Component {
     const response = await axios.post(
       "http://localhost:49855/api/user/direct/log_in",
       {
-        pseudo: this.state.pseudo,
+        email: this.state.email,
         password: this.state.password
       }
     );
@@ -46,11 +46,11 @@ export class LogIn extends Component {
           onSubmit={this.handleSubmit}
         >
           <label>
-            Pseudo <br />
+            email <br />
             <input
-              type="text"
-              name="pseudo"
-              value={this.state.pseudo}
+              type="email"
+              name="email"
+              value={this.state.email}
               onChange={this.handleChange}
             />
           </label>
