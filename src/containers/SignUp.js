@@ -3,7 +3,7 @@ import axios from "axios";
 
 export class SignUp extends Component {
   state = {
-    pseudo: "",
+    username: "",
     email: "",
     password: "",
     checkPassword: ""
@@ -13,9 +13,9 @@ export class SignUp extends Component {
     e.preventDefault();
 
     const response = await axios.post(
-      "https://leboncoin-dsb.herokuapp.com/direct/sign_up",
+      "http://localhost:49855/api/user/direct/sign_up",
       {
-        pseudo: this.state.pseudo,
+        username: this.state.username,
         email: this.state.email,
         password: this.state.password
       }
@@ -119,7 +119,7 @@ export class SignUp extends Component {
             onSubmit={this.handleSubmit}
           >
             <label style={{ fontWeight: "bold" }}>
-              Pseudo <br />
+              username <br />
               <input
                 style={{
                   width: "100%",
@@ -130,8 +130,8 @@ export class SignUp extends Component {
                   marginBottom: "10px"
                 }}
                 type="text"
-                name="pseudo"
-                value={this.state.pseudo}
+                name="username"
+                value={this.state.username}
                 onChange={this.handleChange}
               />
             </label>
