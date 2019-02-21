@@ -21,6 +21,7 @@ export class LogIn extends Component {
     if (response.data.token) {
       this.props.history.push("/");
       this.props.setUser(response.data);
+      console.log(this.props.token);
     } else {
       alert("An error occurred");
     }
