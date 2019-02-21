@@ -10,10 +10,13 @@ export class LogIn extends Component {
   handleSubmit = async event => {
     event.preventDefault();
 
-    const response = await axios.post("http://localhost:3000/direct/log_in", {
-      pseudo: this.state.pseudo,
-      password: this.state.password
-    });
+    const response = await axios.post(
+      "http://localhost:49855/api/user/direct/log_in",
+      {
+        pseudo: this.state.pseudo,
+        password: this.state.password
+      }
+    );
 
     if (response.data.token) {
       this.props.history.push("/");
