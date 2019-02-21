@@ -87,8 +87,6 @@ class App extends Component {
                 >
                   OFFRES
                 </h2>
-              </span>
-              <span>
                 <span
                   style={{
                     color: "white",
