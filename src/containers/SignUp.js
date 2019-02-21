@@ -12,11 +12,14 @@ export class SignUp extends Component {
   handleSubmit = async e => {
     e.preventDefault();
 
-    const response = await axios.post("https://localhost:3000/direct/sign_up", {
-      pseudo: this.state.pseudo,
-      email: this.state.email,
-      password: this.state.password
-    });
+    const response = await axios.post(
+      "https://leboncoin-dsb.herokuapp.com/direct/sign_up",
+      {
+        pseudo: this.state.pseudo,
+        email: this.state.email,
+        password: this.state.password
+      }
+    );
     if (response.data.token) {
       this.props.history.push("/");
       console.log(response.data);
