@@ -9,14 +9,7 @@ export class Publish extends Component {
   };
 
   handleFiles = files => {
-    console.log(files.base64);
-    const maxWidth = "160px";
-    const maxHeight = "140px";
-    console.log(resizebase64(files.base64.join()), maxWidth, maxHeight);
-
-    const img = resizebase64(files.base64.join(""), maxWidth, maxHeight);
-
-    const newFiles = [...this.state.files, ...img];
+    const newFiles = [...this.state.files, ...files.base64];
     this.setState({
       files: newFiles
     });
