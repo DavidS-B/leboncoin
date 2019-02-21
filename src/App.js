@@ -93,8 +93,7 @@ class App extends Component {
                   style={{
                     color: "white",
                     fontSize: "13px",
-                    marginBottom: "2%",
-                    borderRight: "1px white solid"
+                    marginTop: "20px"
                   }}
                 >
                   {this.state.userPseudo}
@@ -103,7 +102,8 @@ class App extends Component {
                   style={{
                     color: "white",
                     fontSize: "13px",
-                    borderRight: "1px white solid"
+                    marginTop: "20px",
+                    marginLeft: "20px"
                   }}
                   onClick={() => {
                     Cookies.remove("userId");
