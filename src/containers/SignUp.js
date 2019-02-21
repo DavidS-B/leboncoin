@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+const express = require("express");
 const cors = require("cors");
-axios.use(cors());
+const app = express();
+app.use(cors());
 
 export class SignUp extends Component {
   state = {
