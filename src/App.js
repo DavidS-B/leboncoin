@@ -82,7 +82,8 @@ class App extends Component {
                   style={{
                     color: "white",
                     fontSize: "13px",
-                    marginTop: "20px"
+                    marginTop: "20px",
+                    marginRight: "20px"
                   }}
                 >
                   OFFRES
