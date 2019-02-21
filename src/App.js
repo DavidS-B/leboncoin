@@ -19,13 +19,13 @@ class App extends Component {
 
   setUser = user => {
     this.setState({
-      userId: user.id,
-      userPseudo: user.pseudo,
+      userId: user._id,
+      userPseudo: user.account.pseudo,
       token: user.token
     });
 
-    Cookies.set("userId", user.id);
-    Cookies.set("userPseudo", user.pseudo);
+    Cookies.set("userId", user._id);
+    Cookies.set("userPseudo", user.account.pseudo);
     Cookies.set("token", user.token);
   };
 
