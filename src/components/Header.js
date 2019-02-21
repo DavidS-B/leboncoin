@@ -38,8 +38,7 @@ class Header extends React.Component {
             style={{
               color: "white",
               fontSize: "13px",
-              marginTop: "20px",
-              marginLeft: "440px"
+              marginTop: "20px"
             }}
           >
             Créer un compte
