@@ -9,7 +9,9 @@ export class Publish extends Component {
   };
 
   handleFiles = files => {
-    const newFiles = [...this.state.files, ...files.base64];
+    const tab = [];
+    tab.push(files.base64);
+    const newFiles = [...this.state.files, ...tab];
     this.setState({
       files: newFiles
     });
@@ -17,7 +19,6 @@ export class Publish extends Component {
 
   render() {
     const filesArray = [];
-
     for (let i = 0; i < this.state.files.length; i++) {
       filesArray.push(
         <img
@@ -30,6 +31,7 @@ export class Publish extends Component {
           }}
           src={this.state.files[i]}
           alt="Annonce"
+          style={{ borderRadius: "4px", width: "170px", height: "150px" }}
         />
       );
     }
@@ -80,10 +82,10 @@ export class Publish extends Component {
               <ReactFileReader
                 fileTypes={[".png", ".jpg"]}
                 base64={true}
-                multipleFiles={true} // `false si une seule image`
+                multipleFiles={false} // `false si une seule image`
                 handleFiles={this.handleFiles}
               >
-                <button
+                <div
                   style={{
                     border: "2px #CCCCCC dotted",
                     borderRadius: "4px",
@@ -92,9 +94,8 @@ export class Publish extends Component {
                     height: "150px"
                   }}
                 >
-                  <img src={filesArray[0]} alt="img1" />
-                  {/* var  img = resizebase64(base64, maxWidth, maxHeight);  */}
-                </button>
+                  {filesArray[0]}
+                </div>
               </ReactFileReader>
             </div>
             <div>
@@ -102,7 +103,7 @@ export class Publish extends Component {
                 style={{ width: "170px", height: "150px" }}
                 fileTypes={[".png", ".jpg"]}
                 base64={true}
-                multipleFiles={true} // `false si une seule image`
+                multipleFiles={false} // `false si une seule image`
                 handleFiles={this.handleFiles}
               >
                 <div
@@ -113,16 +114,16 @@ export class Publish extends Component {
                     width: "170px",
                     height: "150px"
                   }}
-                />
+                >
+                  {filesArray[1]}
+                </div>
               </ReactFileReader>
-
-              {filesArray[1]}
             </div>
             <div style={{ marginRight: "53%" }}>
               <ReactFileReader
                 fileTypes={[".png", ".jpg"]}
                 base64={true}
-                multipleFiles={true} // `false si une seule image`
+                multipleFiles={false} // `false si une seule image`
                 handleFiles={this.handleFiles}
               >
                 <div
@@ -133,10 +134,10 @@ export class Publish extends Component {
                     width: "170px",
                     height: "150px"
                   }}
-                />
+                >
+                  {filesArray[2]}
+                </div>
               </ReactFileReader>
-
-              {filesArray[2]}
             </div>
           </div>
         </div>
