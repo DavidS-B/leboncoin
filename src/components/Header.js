@@ -34,7 +34,7 @@ class Header extends React.Component {
             OFFRES
           </h2>
           <Link
-            to="/direct/sign_up"
+            to="/api/user/sign_up"
             style={{
               color: "white",
               fontSize: "13px",
@@ -44,7 +44,7 @@ class Header extends React.Component {
             Créer un compte
           </Link>
           <Link
-            to="/direct/log_in"
+            to="/api/user/log_in"
             style={{
               color: "white",
               fontSize: "13px",

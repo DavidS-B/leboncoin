@@ -68,7 +68,7 @@ class App extends Component {
                   leboncoin
                 </Link>
                 <Link
-                  to="/direct/publish"
+                  to="/publish"
                   style={{
                     color: "white",
                     fontSize: "13px",
@@ -156,19 +156,19 @@ class App extends Component {
               }}
             />
             <Route
-              path="/direct/sign_up"
+              path="/api/user/sign_up"
               render={props => {
                 return <SignUp setUser={this.setUser} {...props} />;
               }}
             />
             <Route
-              path="/direct/log_in"
+              path="/api/user/log_in"
               render={props => {
                 return <LogIn setUser={this.setUser} {...props} />;
               }}
             />
             <Route
-              path="/direct/publish"
+              path="/api/user/publish"
               render={props => {
                 return <Publish {...props} />;
               }}
