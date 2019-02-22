@@ -92,7 +92,7 @@ export class Publish extends Component {
                     height: "150px"
                   }}
                 >
-                  {filesArray[0]}
+                  <img src={filesArray[0]} alt="img1" />
                   {/* var  img = resizebase64(base64, maxWidth, maxHeight);  */}
                 </button>
               </ReactFileReader>
