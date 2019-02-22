@@ -170,7 +170,7 @@ class App extends Component {
             <Route
               path="/api/user/publish"
               render={props => {
-                return <Publish {...props} />;
+                return <Publish getUser={this.getUser} {...props} />;
               }}
             />
           </Switch>

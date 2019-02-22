@@ -1,11 +1,47 @@
 import React, { Component } from "react";
 import ReactFileReader from "react-file-reader";
-// const resizebase64 = require("resize-base64");
-// import LogIn from "./LogIn";
+import axios from "axios";
 
 export class Publish extends Component {
   state = {
-    files: []
+    files: [],
+    title: "",
+    description: "",
+    price: ""
+  };
+
+  handleSubmit = async e => {
+    e.preventDefault();
+    const token = this.props.getUser().token;
+    const response = await axios.post(
+      "https://leboncoin-apidsb.herokuapp.com/api/offer/publish",
+      {
+        files: this.state.files,
+        title: this.state.title,
+        description: this.state.description,
+        price: Number(this.state.price)
+      },
+      {
+        headers: {
+          authorization: "Bearer " + token
+        }
+      }
+    );
+    console.log(response.data);
+    // if (response.data.token) {
+    //   this.props.history.push("/");
+    //   console.log(response.data);
+
+    //   this.props.setUser(response.data);
+    // } else {
+    //   alert("An error occurred");
+    // }
+  };
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
   handleFiles = files => {
@@ -62,84 +98,122 @@ export class Publish extends Component {
           >
             Votre annonce
           </h2>
-          <p
-            style={{
-              paddingTop: "10px",
-              paddingBottom: "10px",
-              paddingLeft: "10px"
-            }}
-          >
-            Photos : Une annonce avec photo est 7 fois plus consultée qu'une
-            annonce sans photo
-          </p>
-          <div
+          <form
             style={{
               display: "flex",
-              justifyContent: "space-between"
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center"
             }}
+            onSubmit={this.handleSubmit}
           >
-            <div style={{ marginLeft: "10px", marginBottom: "10px" }}>
-              <ReactFileReader
-                fileTypes={[".png", ".jpg"]}
-                base64={true}
-                multipleFiles={false} // `false si une seule image`
-                handleFiles={this.handleFiles}
-              >
-                <div
-                  style={{
-                    border: "2px #CCCCCC dotted",
-                    borderRadius: "4px",
-                    backgroundColor: "#F2F2F2",
-                    width: "170px",
-                    height: "150px"
-                  }}
+            <label>
+              Titre de l'annonce <br />
+              <input
+                type="text"
+                name="title"
+                value={this.state.title}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label>
+              Texte de l'annonce <br />
+              <input
+                type="text"
+                name="description"
+                value={this.state.description}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label>
+              Prix <br />
+              <input
+                type="text"
+                name="price"
+                value={this.state.price}
+                onChange={this.handleChange}
+              />
+            </label>{" "}
+            <p
+              style={{
+                paddingTop: "10px",
+                paddingBottom: "10px",
+                paddingLeft: "10px"
+              }}
+            >
+              Photos : Une annonce avec photo est 7 fois plus consultée qu'une
+              annonce sans photo
+            </p>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between"
+              }}
+            >
+              <div style={{ marginLeft: "10px", marginBottom: "10px" }}>
+                <ReactFileReader
+                  fileTypes={[".png", ".jpg"]}
+                  base64={true}
+                  multipleFiles={false} // `false si une seule image`
+                  handleFiles={this.handleFiles}
                 >
-                  {filesArray[0]}
-                </div>
-              </ReactFileReader>
-            </div>
-            <div>
-              <ReactFileReader
-                style={{ width: "170px", height: "150px" }}
-                fileTypes={[".png", ".jpg"]}
-                base64={true}
-                multipleFiles={false} // `false si une seule image`
-                handleFiles={this.handleFiles}
-              >
-                <div
-                  style={{
-                    border: "2px #CCCCCC dotted",
-                    borderRadius: "4px",
-                    backgroundColor: "#F2F2F2",
-                    width: "170px",
-                    height: "150px"
-                  }}
+                  <div
+                    style={{
+                      border: "2px #CCCCCC dotted",
+                      borderRadius: "4px",
+                      backgroundColor: "#F2F2F2",
+                      width: "170px",
+                      height: "150px"
+                    }}
+                  >
+                    {filesArray[0]}
+                  </div>
+                </ReactFileReader>
+              </div>
+              <div>
+                <ReactFileReader
+                  style={{ width: "170px", height: "150px" }}
+                  fileTypes={[".png", ".jpg"]}
+                  base64={true}
+                  multipleFiles={false} // `false si une seule image`
+                  handleFiles={this.handleFiles}
                 >
-                  {filesArray[1]}
-                </div>
-              </ReactFileReader>
-            </div>
-            <div style={{ marginRight: "53%" }}>
-              <ReactFileReader
-                fileTypes={[".png", ".jpg"]}
-                base64={true}
-                multipleFiles={false} // `false si une seule image`
-                handleFiles={this.handleFiles}
-              >
-                <div
-                  style={{
-                    border: "2px #CCCCCC dotted",
-                    borderRadius: "4px",
-                    backgroundColor: "#F2F2F2",
-                    width: "170px",
-                    height: "150px"
-                  }}
+                  <div
+                    style={{
+                      border: "2px #CCCCCC dotted",
+                      borderRadius: "4px",
+                      backgroundColor: "#F2F2F2",
+                      width: "170px",
+                      height: "150px"
+                    }}
+                  >
+                    {filesArray[1]}
+                  </div>
+                </ReactFileReader>
+              </div>
+              <div style={{ marginRight: "53%" }}>
+                <ReactFileReader
+                  fileTypes={[".png", ".jpg"]}
+                  base64={true}
+                  multipleFiles={false} // `false si une seule image`
+                  handleFiles={this.handleFiles}
                 >
-                  {filesArray[2]}
-                </div>
-              </ReactFileReader>
+                  <div
+                    style={{
+                      border: "2px #CCCCCC dotted",
+                      borderRadius: "4px",
+                      backgroundColor: "#F2F2F2",
+                      width: "170px",
+                      height: "150px"
+                    }}
+                  >
+                    {filesArray[2]}
+                  </div>
+                </ReactFileReader>
+              </div>
             </div>
-          </div>
+            <input type="submit" value="Valider" />
+          </form>
         </div>
       </div>
     );
