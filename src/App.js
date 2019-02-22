@@ -68,7 +68,7 @@ class App extends Component {
                   leboncoin
                 </Link>
                 <Link
-                  to="/publish"
+                  to="/api/user/publish"
                   style={{
                     color: "white",
                     fontSize: "13px",
