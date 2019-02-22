@@ -13,7 +13,7 @@ export class SignUp extends Component {
     e.preventDefault();
 
     const response = await axios.post(
-      "https://localhost:49855/api/user/sign_up",
+      "http://localhost:49855/api/user/sign_up",
       {
         pseudo: this.state.pseudo,
         email: this.state.email,
