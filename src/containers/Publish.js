@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactFileReader from "react-file-reader";
-const resizebase64 = require("resize-base64");
+// const resizebase64 = require("resize-base64");
 // import LogIn from "./LogIn";
 
 export class Publish extends Component {

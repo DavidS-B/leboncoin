@@ -13,7 +13,7 @@ export class SignUp extends Component {
     e.preventDefault();
 
     const response = await axios.post(
-      "http://localhost:49855/api/user/direct/sign_up",
+      "http://leboncoin-dsb.herokuapp.com/api/user/direct/sign_up",
       {
         pseudo: this.state.pseudo,
         email: this.state.email,
