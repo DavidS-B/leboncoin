@@ -11,7 +11,7 @@ export class LogIn extends Component {
     event.preventDefault();
 
     const response = await axios.post(
-      "http://localhost:49855/api/user/log_in",
+      "https://leboncoin-dsb.herokuapp.com/api/user/log_in",
       {
         email: this.state.email,
         password: this.state.password
