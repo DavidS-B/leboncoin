@@ -29,25 +29,43 @@ class Home extends React.Component {
                 style={{
                   height: "160px",
                   display: "flex",
-                  flexDirection: "column",
+                  alignItems: "center",
                   border: "1px #CECECE solid",
                   backgroundColor: "#FFFFFF"
                 }}
                 key={offer._id}
               >
-                <p
+                <img
                   style={{
-                    color: "#6A8EB1",
-                    marginBottom: "25px",
-                    marginTop: "10px",
-                    marginLeft: "10px"
+                    borderRadius: "4px",
+                    width: "170px",
+                    height: "150px",
+                    marginLeft: "5px"
+                  }}
+                  src={offer.pictures[0].secure_url}
+                  alt="offerImg"
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignSelf: "flex-start"
                   }}
                 >
-                  {offer.title}
-                </p>{" "}
-                <p style={{ color: "#F56A2A", marginLeft: "10px" }}>
-                  {offer.price + "€"}
-                </p>
+                  <p
+                    style={{
+                      color: "#6A8EB1",
+                      marginBottom: "25px",
+                      marginTop: "10px",
+                      marginLeft: "10px"
+                    }}
+                  >
+                    {offer.title}
+                  </p>
+                  <p style={{ color: "#F56A2A", marginLeft: "10px" }}>
+                    {offer.price + "€"}
+                  </p>
+                </div>
               </li>
             </Link>
           ))}
@@ -120,13 +138,14 @@ class Home extends React.Component {
       this.props.match.params.page_number !== prevProps.match.params.page_number
     ) {
       const response = await axios.get(
-        "https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=" +
-          this.skip() +
-          "&limit=25"
+        // "https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=" +
+        //   this.skip() +
+        //   "&limit=25"
+        "https://leboncoin-apidsb.herokuapp.com/api/offer"
       );
 
       this.setState({
-        offers: response.data.offers,
+        offers: response.data,
         isLoading: false
       });
     }
@@ -134,12 +153,13 @@ class Home extends React.Component {
 
   async componentDidMount() {
     const response = await axios.get(
-      "https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=" +
-        this.skip() +
-        "&limit=25"
+      // "https://leboncoin-api.herokuapp.com/api/offer/with-count?skip=" +
+      //   this.skip() +
+      //   "&limit=25"
+      "https://leboncoin-apidsb.herokuapp.com/api/offer"
     );
     this.setState({
-      offers: response.data.offers,
+      offers: response.data,
       isLoading: false
     });
   }

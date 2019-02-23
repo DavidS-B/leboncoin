@@ -28,14 +28,11 @@ export class Publish extends Component {
       }
     );
     console.log(response.data);
-    // if (response.data.token) {
-    //   this.props.history.push("/");
-    //   console.log(response.data);
-
-    //   this.props.setUser(response.data);
-    // } else {
-    //   alert("An error occurred");
-    // }
+    if (response.data._id) {
+      this.props.history.push("/");
+    } else {
+      alert("An error occurred");
+    }
   };
 
   handleChange = event => {

@@ -15,6 +15,18 @@ export class Offer extends Component {
         if (this.state.offers[i]._id === this.props.match.params.id) {
           return (
             <div>
+              <img
+                style={{
+                  display: "block",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  marginBottom: "40px",
+                  width: "400px",
+                  height: "400px"
+                }}
+                src={this.state.offers[i].pictures[0].secure_url}
+                alt="offerImg"
+              />
               <div
                 style={{
                   backgroundColor: "white",
@@ -85,10 +97,10 @@ export class Offer extends Component {
 
   async componentDidMount() {
     const response = await axios.get(
-      "https://leboncoin-api.herokuapp.com/api/offer/with-count"
+      "https://leboncoin-apidsb.herokuapp.com/api/offer"
     );
     this.setState({
-      offers: response.data.offers,
+      offers: response.data,
       isLoading: false
     });
   }
