@@ -35,16 +35,18 @@ class Home extends React.Component {
                 }}
                 key={offer._id}
               >
-                <img
-                  style={{
-                    borderRadius: "4px",
-                    width: "170px",
-                    height: "150px",
-                    marginLeft: "5px"
-                  }}
-                  src={offer.pictures[0].secure_url}
-                  alt="offerImg"
-                />
+                {offer.pictures.length > 0 && (
+                  <img
+                    style={{
+                      borderRadius: "4px",
+                      width: "170px",
+                      height: "150px",
+                      marginLeft: "5px"
+                    }}
+                    src={offer.pictures[0].secure_url}
+                    alt="offerImg"
+                  />
+                )}
                 <div
                   style={{
                     display: "flex",

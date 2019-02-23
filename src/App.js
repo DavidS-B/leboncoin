@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cookies from "js-cookie";
 import Home from "./containers/Home";
 import Header from "./components/Header";
@@ -37,102 +37,23 @@ class App extends Component {
     };
   };
 
-  renderHead = () => {
-    if (this.state.token) {
-      return (
-        <>
-          <div style={{ height: "55px", backgroundColor: "#F5692A" }}>
-            <div
-              style={{
-                width: "82%",
-                margin: "auto",
-                display: "flex",
-                justifyContent: "space-between"
-              }}
-            >
-              <span
-                style={{
-                  display: "flex",
-                  height: "55px"
-                }}
-              >
-                <Link
-                  to="/"
-                  style={{
-                    color: "white",
-                    fontSize: "30px",
-                    marginTop: "10px",
-                    marginRight: "30px"
-                  }}
-                >
-                  leboncoin
-                </Link>
-                <Link
-                  to="/api/user/publish"
-                  style={{
-                    color: "white",
-                    fontSize: "13px",
-                    marginTop: "20px",
-                    marginRight: "20px"
-                  }}
-                >
-                  DÉPOSER UNE ANNONCE
-                </Link>
-                <h2
-                  style={{
-                    color: "white",
-                    fontSize: "13px",
-                    marginTop: "20px",
-                    marginRight: "20px"
-                  }}
-                >
-                  OFFRES
-                </h2>
-                <span
-                  style={{
-                    color: "white",
-                    fontSize: "13px",
-                    marginTop: "20px"
-                  }}
-                >
-                  {this.state.userPseudo}
-                </span>
-                <span
-                  style={{
-                    color: "white",
-                    fontSize: "13px",
-                    marginTop: "20px",
-                    marginLeft: "20px"
-                  }}
-                  onClick={() => {
-                    Cookies.remove("userId");
-                    Cookies.remove("userPseudo");
-                    Cookies.remove("token");
+  handleClick = () => {
+    Cookies.remove("userId");
+    Cookies.remove("userPseudo");
+    Cookies.remove("token");
 
-                    this.setState({
-                      userId: null,
-                      userPseudo: null,
-                      token: null
-                    });
-                  }}
-                >
-                  Se deconnecter
-                </span>
-              </span>
-            </div>
-          </div>
-        </>
-      );
-    } else {
-      return <Header />;
-    }
+    this.setState({
+      userId: null,
+      userPseudo: null,
+      token: null
+    });
   };
 
   render() {
     return (
       <Router>
         <>
-          <div>{this.renderHead()}</div>
+          <Header check={this.state} handleClick={this.handleClick} />
           <Switch>
             <Route
               exact
@@ -152,7 +73,7 @@ class App extends Component {
               exact
               path="/offer/:id"
               render={props => {
-                return <Offer {...props} />;
+                return <Offer getUser={this.getUser} {...props} />;
               }}
             />
             <Route
