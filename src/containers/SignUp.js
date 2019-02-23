@@ -4,6 +4,7 @@ import axios from "axios";
 export class SignUp extends Component {
   state = {
     pseudo: "",
+    phone: "",
     email: "",
     password: "",
     checkPassword: ""
@@ -11,22 +12,26 @@ export class SignUp extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-
-    const response = await axios.post(
-      "https://leboncoin-apidsb.herokuapp.com/api/user/sign_up",
-      {
-        pseudo: this.state.pseudo,
-        email: this.state.email,
-        password: this.state.password
-      }
-    );
-    if (response.data.token) {
-      this.props.history.push("/");
-      console.log(response.data);
-
-      this.props.setUser(response.data);
+    if (this.state.password !== this.state.checkPassword) {
+      alert("Passwords don't match");
     } else {
-      alert("An error occurred");
+      const response = await axios.post(
+        "https://leboncoin-apidsb.herokuapp.com/api/user/sign_up",
+        {
+          pseudo: this.state.pseudo,
+          phone: this.state.phone,
+          email: this.state.email,
+          password: this.state.password
+        }
+      );
+      if (response.data.token) {
+        this.props.history.push("/");
+        console.log(response.data);
+
+        this.props.setUser(response.data);
+      } else {
+        alert("An error occurred");
+      }
     }
   };
 
@@ -152,6 +157,24 @@ export class SignUp extends Component {
                 onChange={this.handleChange}
               />
             </label>
+            <label style={{ fontWeight: "bold" }}>
+              Telephone <br />
+              <input
+                style={{
+                  width: "100%",
+                  height: "30px",
+                  border: "1px #989898 solid",
+                  borderRadius: "3px",
+                  marginTop: "5px",
+                  marginBottom: "10px"
+                }}
+                type="tel"
+                pattern="^(?:0|\(?\+33\)?\s?|0033\s?)[1-79](?:[\.\-\s]?\d\d){4}$"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleChange}
+              />
+            </label>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <label style={{ width: "100%", fontWeight: "bold" }}>
                 Mot de passe <br />
@@ -166,7 +189,7 @@ export class SignUp extends Component {
                     marginTop: "5px",
                     marginBottom: "10px"
                   }}
-                  value={this.state.pwd}
+                  value={this.state.passwordd}
                   onChange={this.handleChange}
                 />
               </label>
@@ -174,7 +197,7 @@ export class SignUp extends Component {
                 Confirmer le mot de passe <br />
                 <input
                   type="password"
-                  name="checkPwd"
+                  name="checkPassword"
                   style={{
                     width: "100%",
                     height: "30px",
@@ -183,7 +206,7 @@ export class SignUp extends Component {
                     marginTop: "5px",
                     marginBottom: "20px"
                   }}
-                  value={this.state.checkPwd}
+                  value={this.state.checkPassword}
                   onChange={this.handleChange}
                 />
               </label>

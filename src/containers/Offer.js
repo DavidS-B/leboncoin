@@ -22,7 +22,8 @@ export class Offer extends Component {
                   marginRight: "auto",
                   marginBottom: "40px",
                   width: "400px",
-                  height: "400px"
+                  height: "400px",
+                  border: "1px black solid"
                 }}
                 src={this.state.offers[i].pictures[0].secure_url}
                 alt="offerImg"
